@@ -47,7 +47,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-adjust</command>
-                <property>/controls/engines/engine/throttle</property>
+                <property>controls/flight/spoilers</property>
                 <factor>0.05</factor>
                 <min>0</min>
                 <max>1</max>
@@ -59,7 +59,7 @@
                 <tooltip-id>airbrake</tooltip-id>
                 <label>%s</label>
                 <mapping>nasal</mapping>
-                <property>/controls/engines/engine/throttle</property>
+                <property>controls/flight/spoilers</property>
                 <script>
                     return sprintf("Speedbrake %d%% out", 100-arg[0]*100);
                 </script>
@@ -69,7 +69,7 @@
     <animation>
         <type>translate</type>
         <object-name>airbrake-front</object-name>
-        <property>/controls/engines/engine/throttle</property>
+        <property>controls/flight/spoilers</property>
         <factor>1</factor>
         <interpolation>
             <entry>
@@ -93,7 +93,7 @@
     <animation>
         <type>translate</type>
         <object-name>airbrake-rear</object-name>
-        <property>/controls/engines/engine/throttle</property>
+        <property>controls/flight/spoilers</property>
         <interpolation>
             <entry>
                 <ind>1</ind>
@@ -231,7 +231,7 @@
     <animation>
         <type>rotate</type>
         <object-name>trim-front</object-name>
-        <property>/controls/flight/elevator-trim</property>
+        <property>controls/flight/elevator-trim</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -250,7 +250,7 @@
         <type>textranslate</type>
         <object-name>trim.ind.f</object-name>
         <object-name>trim.ind.r</object-name>
-        <property>/controls/flight/elevator-trim</property>
+        <property>controls/flight/elevator-trim</property>
         <factor>0.09</factor>
         <axis>
             <x>1</x>
@@ -289,7 +289,7 @@
     <animation>
         <type>rotate</type>
         <object-name>trim-rear</object-name>
-        <property>/controls/flight/elevator-trim</property>
+        <property>controls/flight/elevator-trim</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -415,7 +415,7 @@
         <object-name>stick-front</object-name>
         <object-name>trim-front</object-name>
         <object-name>ptt-front</object-name>
-        <property>/controls/flight/elevator</property>
+        <property>controls/flight/elevator</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -434,7 +434,7 @@
         <object-name>stick-front</object-name>
         <object-name>trim-front</object-name>
         <object-name>ptt-front</object-name>
-        <property>/controls/flight/aileron</property>
+        <property>controls/flight/aileron</property>
         <factor>10</factor>
         <offset>0</offset>
         <center>
@@ -454,7 +454,7 @@
         <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
         <object-name>ptt-rear</object-name>
-        <property>/controls/flight/elevator</property>
+        <property>controls/flight/elevator</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
         <center>
@@ -473,7 +473,7 @@
         <object-name>trim-rear</object-name>
         <object-name>stick-rear</object-name>
         <object-name>ptt-rear</object-name>
-        <property>/controls/flight/aileron</property>
+        <property>controls/flight/aileron</property>
         <factor>10</factor>
         <offset>0</offset>
         <center>
@@ -491,7 +491,7 @@
     <animation>
         <type>rotate</type>
         <object-name>pedalFL</object-name>
-        <property>/controls/flight/rudder</property>
+        <property>controls/flight/rudder</property>
         <factor>30</factor>
         <center>
             <x-m>-3.70169</x-m>
@@ -506,7 +506,7 @@
     <animation>
         <type>rotate</type>
         <object-name>pedalFR</object-name>
-        <property>/controls/flight/rudder</property>
+        <property>controls/flight/rudder</property>
         <factor>-30</factor>
         <center>
             <x-m>-3.70169</x-m>
@@ -521,7 +521,7 @@
     <animation>
         <type>rotate</type>
         <object-name>pedalRL</object-name>
-        <property>/controls/flight/rudder</property>
+        <property>controls/flight/rudder</property>
         <factor>30</factor>
         <center>
             <x-m>-2.41629</x-m>
@@ -536,7 +536,7 @@
     <animation>
         <type>rotate</type>
         <object-name>pedalRR</object-name>
-        <property>/controls/flight/rudder</property>
+        <property>controls/flight/rudder</property>
         <factor>-30</factor>
         <center>
             <x-m>-2.41629</x-m>
@@ -563,7 +563,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-toggle</command>
-                <property>/controls/cabin/armrests</property>
+                <property>controls/cabin/armrests</property>
             </binding>
         </action>
         <hovered>
@@ -579,7 +579,7 @@
         <object-name>armrest.L2</object-name>
         <object-name>armrest.R2</object-name>
         <condition>
-            <property>/controls/cabin/armrests</property>
+            <property>controls/cabin/armrests</property>
         </condition>
     </animation>
     
@@ -646,7 +646,7 @@
         <type>rotate</type>
         <object-name>canopy.int.full</object-name>
         <object-name>panelF</object-name>
-        <property>sim/model/door-positions/canopyF/position-norm</property>
+        <property>sim/multiplay/generic/float[0]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -672,7 +672,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.front.left</object-name>
-        <property>sim/model/door-positions/canopyF/position-norm</property>
+        <property>sim/multiplay/generic/float[0]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -699,7 +699,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.front.right</object-name>
-        <property>sim/model/door-positions/canopyF/position-norm</property>
+        <property>sim/multiplay/generic/float[0]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -748,7 +748,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.int.full</object-name>
-    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <property>sim/multiplay/generic/float[1]</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
       <entry><ind> 0.2 </ind><dep> 0.5 </dep></entry>
@@ -762,7 +762,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.int.full</object-name>
-    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <property>sim/multiplay/generic/float[1]</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
       <entry><ind> 0.2 </ind><dep> 0.0 </dep></entry>
@@ -776,7 +776,7 @@
     <animation>
         <type>translate</type>
         <object-name>canopy.int.full</object-name>
-    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+    <property>sim/multiplay/generic/float[1]</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
       <entry><ind> 0.2 </ind><dep> 0.0 </dep></entry>
@@ -792,7 +792,7 @@
         <object-name>canopy.int.full</object-name>
     <condition>
                     <less-than>
-                    <property>sim/model/door-positions/canopyFJ/position-norm</property>
+                    <property>sim/multiplay/generic/float[1]</property>
                     <value>0.99</value>
                 </less-than>
             </condition>
@@ -822,7 +822,7 @@
         <object-name>canopy.rear.bars</object-name>
         <object-name>canopy.rearframe.2</object-name>
         <object-name>yawstring2</object-name>
-        <property>sim/model/door-positions/canopyB/position-norm</property>
+        <property>sim/multiplay/generic/float[2]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -848,7 +848,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.rear.left</object-name>
-        <property>sim/model/door-positions/canopyB/position-norm</property>
+        <property>sim/multiplay/generic/float[2]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -875,7 +875,7 @@
     <animation>
         <type>rotate</type>
         <object-name>canopy.rear.right</object-name>
-        <property>sim/model/door-positions/canopyB/position-norm</property>
+        <property>sim/multiplay/generic/float[2]</property>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -909,7 +909,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-adjust</command>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
+                <property>sim/multiplay/generic/float[3]</property>
                 <factor>-0.05</factor>
                 <min>0</min>
                 <max>1</max>
@@ -921,14 +921,14 @@
                 <tooltip-id>windowF</tooltip-id>
                 <label>Front Window: %3d%% open</label>
                 <mapping>percent</mapping>
-                <property>sim/model/door-positions/frontwin/position-norm</property>
+                <property>sim/multiplay/generic/float[3]</property>
             </binding>
         </hovered>
     </animation>
     <animation>
         <type>translate</type>
         <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
+        <property>sim/multiplay/generic/float[3]</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -950,7 +950,7 @@
     <animation>
         <type>translate</type>
         <object-name>sliding_window.front</object-name>
-        <property>sim/model/door-positions/frontwin/position-norm</property>
+        <property>sim/multiplay/generic/float[3]</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -983,7 +983,7 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-adjust</command>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
+                <property>sim/multiplay/generic/float[4]</property>
                 <factor>0.05</factor>
                 <min>0</min>
                 <max>1</max>
@@ -995,14 +995,14 @@
                 <tooltip-id>windowR</tooltip-id>
                 <label>Rear Window: %3d%% open</label>
                 <mapping>percent</mapping>
-                <property>sim/model/door-positions/rearwin/position-norm</property>
+                <property>sim/multiplay/generic/float[4]</property>
             </binding>
         </hovered>
     </animation>
     <animation>
         <type>translate</type>
         <object-name>sliding_window.rear</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
+        <property>sim/multiplay/generic/float[4]</property>
         <interpolation>
             <entry>
                 <ind>0</ind>
@@ -1024,7 +1024,7 @@
     <animation>
         <type>translate</type>
         <object-name>sliding_window.rear</object-name>
-        <property>sim/model/door-positions/rearwin/position-norm</property>
+        <property>sim/multiplay/generic/float[4]</property>
         <interpolation>
             <entry>
                 <ind>0</ind>

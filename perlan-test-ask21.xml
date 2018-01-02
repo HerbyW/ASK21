@@ -33,15 +33,15 @@ Approach Elevator: 0.0859411
 
 
 
-<airplane mass="720" version="YASIM_VERSION_CURRENT">
+<airplane mass="1265" version="YASIM_VERSION_CURRENT">
 <!--<airplane mass="720">-->
     <!-- Approach configuration -->
-    <approach speed="38" aoa="2.7" glide-angle="3.6">
+    <approach speed="48" aoa="2.7" glide-angle="2.6">
       <control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
       <control-setting axis="/controls/engines/engine[0]/mixture"  value="0.65"/>
     </approach>
       <!-- Cruise configuration -->
-    <cruise speed="75.6" alt="5000" glide-angle="3.9">
+    <cruise speed="75.6" alt="5000" glide-angle="2.9">
          
 	<control-setting axis="/controls/engines/engine[0]/throttle" value="0.0"/>
 	<control-setting axis="/controls/engines/engine[0]/mixture" value="0.65"/>
@@ -49,11 +49,11 @@ Approach Elevator: 0.0859411
 	<!-- pilot's eyepoint -->
 	<cockpit x="2.5396" y="0" z="0.94214"/>
     <fuselage ax="4.14514" ay="0.0" az="0.43618" bx="-3.76945" by="0.0" bz="0.73498" width="0.68" taper="0.28" midpoint="0.25" idrag="1"/>
-    <wing x="0.88522" y="0.370" z="0.73669" taper="0.15" incidence="2.0" twist="-2.5" length="8.334" chord="1.445" sweep="-5" dihedral="3.5">
+    <wing x="0.88522" y="0.370" z="0.73669" taper="0.75" incidence="1.5" twist="-3.5" length="12.6" chord="0.545" sweep="-2.5" dihedral="3">
         <stall aoa="22.7" width="8" peak="1.5"/>
-        <flap0 start="0.43" end="0.97" lift="1.15" drag="3.2"/>
+        <flap0 start="0.4" end="0.9" lift="1.15" drag="3.2"/>
         <flap1 start="0.0" end="0.4" lift="0.15" drag="1.70"/>
-        <spoiler start="0.34" end="0.44" lift="-4.5" drag="75.5"/>
+        <spoiler start="0.34" end="0.44" lift="-4.0" drag="55.5"/>
         
         <control-input axis="/controls/flight/aileron" control="FLAP0" split="true"/>
         <control-input axis="/controls/flight/stallflap" control="FLAP1"/>
@@ -100,12 +100,12 @@ Approach Elevator: 0.0859411
              cruise-speed="140"
              cruise-rpm="2500"
              cruise-alt="5000" 
-             cruise-power="50"
-             takeoff-power="56" 
+             cruise-power="70"
+             takeoff-power="76" 
              takeoff-rpm="2700">
              <actionpt x="-0.388" y="0.0" z="0.716"/>
              <piston-engine eng-rpm="2700" 
-                            eng-power="56"
+                            eng-power="76"
                             displacement="294" 
                             compression="9.1">
                             <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle" />

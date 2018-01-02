@@ -23,8 +23,18 @@
 			</binding>
 			<binding>
 				<command>property-toggle</command>
+                                <property>/sim/model/instruments-light</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+                                <property>/controls/switches/gauge-light</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
 				<property>/sim/sound/switch</property>
 			</binding>
 		</action>
 	</animation>
 </PropertyList>
+
+

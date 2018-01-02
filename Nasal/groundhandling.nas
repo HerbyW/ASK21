@@ -17,14 +17,14 @@ var update_systems = func {
 
 
     # Conditions: glider must be on ground and people can only run up to 15kts (about), towing can be done up to 20
-    var assistConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 15;
-    var handlingConditions = getprop("gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20;
+    var assistConditions = getprop("/gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 15;
+    var handlingConditions = getprop("/gear/gear[1]/wow") == 1 and getprop("/velocities/groundspeed-kt") < 20;
 
     # Wing holder
     if (getprop("/controls/gear/assist-1") == 1 and assistConditions) {
-        setprop("controls/gear/assist", 1);
+        setprop("/controls/gear/assist", 1);
     } else {
-        setprop("controls/gear/assist", 0);
+        setprop("/controls/gear/assist", 0);
         setprop("/controls/gear/assist-1", 0); #automatically reset assisting gears on takeoff
     }
 

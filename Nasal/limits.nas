@@ -12,7 +12,7 @@ var checkSpoiler = func(n) {
   if (spoilersetting == 1)
     return;
 
-  var airspeed = getprop("velocities/airspeed-kt");
+  var airspeed = getprop("/velocities/airspeed-kt");
   var ltext = "";
   var speed = getprop("limits/max-spoiler-extension-speed");
 
@@ -30,20 +30,20 @@ var checkSpoiler = func(n) {
 
 
 # Set the listeners
-setlistener("controls/engines/engine/throttle", checkSpoiler);
+setlistener("/controls/flight/spoilers", checkSpoiler);
 
 var checkG = func{
   if (getprop("/sim/freeze/replay-state"))
     return;
 
-  var airspeed = getprop("velocities/airspeed-kt");
-  var vne      = getprop("limits/vne");
-  var vmo      = getprop("limits/vmo");
+  var airspeed = getprop("/velocities/airspeed-kt");
+  var vne      = getprop("/limits/vne");
+  var vmo      = getprop("/limits/vmo");
   var g = getprop("/accelerations/pilot-g") or 1;
-  var max_positive_vmo = getprop("limits/max-positive-g-vmo");
-  var max_negative_vmo = getprop("limits/max-negative-g-vmo");
-  var max_positive_vne = getprop("limits/max-positive-g-vne");
-  var max_negative_vne = getprop("limits/max-negative-g-vne");
+  var max_positive_vmo = getprop("/limits/max-positive-g-vmo");
+  var max_negative_vmo = getprop("/limits/max-negative-g-vmo");
+  var max_positive_vne = getprop("/limits/max-positive-g-vne");
+  var max_negative_vne = getprop("/limits/max-negative-g-vne");
   var msg = "";
 
   if ((max_positive_vmo != nil) and (airspeed <= vmo) and (g > max_positive_vmo))
@@ -76,9 +76,9 @@ var checkVNE = func {
   if (getprop("/sim/freeze/replay-state"))
     return;
 
-  var airspeed = getprop("velocities/airspeed-kt");
-  var vne      = getprop("limits/vne");
-  var vmo      = getprop("limits/vmo");
+  var airspeed = getprop("/velocities/airspeed-kt");
+  var vne      = getprop("/limits/vne");
+  var vmo      = getprop("/limits/vmo");
   var msg = "";
 
   if ((airspeed != nil) and (vne != nil) and (airspeed > vne))
@@ -109,8 +109,8 @@ var checkMTOW = func{
   if (getprop("/sim/freeze/replay-state"))
     return;
 
-  var gw = getprop("fdm/yasim/gross-weight-lbs");
-  var mtow = getprop("limits/mtow-lbs");
+  var gw = getprop("/fdm/yasim/gross-weight-lbs");
+  var mtow = getprop("/limits/mtow-lbs");
   var msg = "";
   
   if ((mtow != nil) and (gw != nil) and (gw > mtow))

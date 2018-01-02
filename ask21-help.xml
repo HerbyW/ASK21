@@ -21,29 +21,35 @@
         <desc>Open aerotow and winch hooks. This releases the cable if one is attached.</desc>
     </key>
     <key>
-        <name>S</name>
-        <desc>Increase variometer volume</desc>
+        <name>k/j</name>
+        <desc>speedbrakes out/in</desc>
+    </key>
+    <key>
+        <name>B , .</name>
+        <desc>Parking Brake, brakes</desc>
+    </key>
+    <key>
+        <name>e</name>
+        <desc>Mototr out/in</desc>
+    </key>
+    <key>
+        <name>{</name>
+        <desc>Magnetos, press 3 times</desc>
     </key>
     <key>
         <name>s</name>
-        <desc>Decrease variometer volume</desc>
+        <desc>Starter</desc>
     </key>
-    <key>
-        <name>D</name>
-        <desc>Toggle windows</desc>
-    </key>
+    
     <text>
-    === General Help ===
-
-     - "Throttle" axis (or throttle keys) are connected to the glider's airbrake.
-     - The wheel brake is activated progressively by applying more than 85% airbrake.
+    === General Help Version 4.2===
+    
      - You can take off using a winch or use another aircraft as an aerotow.
      - The winch / aerotow cable can be released with the "o" key or using button 1 of the (first) joystick.
-     - NOTE: The Walker uses e (E) and d(D) for walking instead of w and s.
 
     === Winch Takeoff Procedure ===
 
-     - Retract speed brake (full throttle).
+     - Retract speed brake
      - Set trim just forward of the middle position.
      - Press 'Ctrl-w' to place winch.
      - Press 'Shift-w' to start winch and take up cable slack.
@@ -62,7 +68,7 @@
 
     === Aerotow Takeoff Procedure ===
 
-      - Retract speed brake (full throttle)
+      - Retract speed brake
       - Place another aerotow aircraft in front of your glider (multi-player).
       - Press 'Ctrl-o' to hook to the aerotow.
       - Ask the other aircraft to take off :).
@@ -84,6 +90,6 @@
 
     When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o
     (release: Ctrl+shift+o) so he can carry you around the airport
-    or even tow you into the air! (also check the Aerotow Settings therefore).
+    or even tow you into the air! (also check the Aerotow Settings therefore.
     </text>
 </PropertyList>

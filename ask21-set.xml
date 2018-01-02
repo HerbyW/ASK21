@@ -3,27 +3,74 @@
 YASim Schleicher ASK 21 Glider
 See AUTHORS.txt for credits
 -->
-<PropertyList include="walker-include.xml">
+<PropertyList>
+  
+  <controls>       
+    <cabin>
+	<armrests type="bool">0</armrests><!--Black armrests off by default-->
+      </cabin>
+      <breakage>
+	<enabled type="bool">0</enabled><!--Rope Breakage by default disabled-->
+	<altitude-m type="double">50</altitude-m>
+      </breakage>
+      <electric>
+	<battery-switch-pos type="double">0</battery-switch-pos>
+	<battery-switch type="bool">0</battery-switch>
+      </electric>
+      <flight>
+	<rudder2 type="double">0</rudder2>
+      </flight>
+      <gear>
+	<assist-1 type="bool">false</assist-1>
+      </gear>
+      <winch>
+	<place type="bool">false</place>
+      </winch>
+      <aerotow>
+	<find-aircraft type="bool">false</find-aircraft>
+      </aerotow>
+      <smoke type="bool">false</smoke>
+      
+      <engines>
+	<engine n="0">
+	  <boost type="double">0</boost>
+	  <magnetos>0</magnetos>
+	</engine>
+      </engines>
+    
+    <switches>      
+      <gauge-light type="int">0</gauge-light>      
+    </switches>
+  </controls>
+  
     <sim>
         <description>Schleicher ASK 21 Glider</description>
-        <author>Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf and Gilberto Agostinho</author>
+        <author>Herbert Wagner, Heiko Schulz, AJ MacLeod, with help by Detlef Faber, "refurbished" by Thomas Polzer, Viktor Radnai, Benedikt Wolf and Gilberto Agostinho</author>
         <long-description>
-            The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*). It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload. The K21, how it is also called sometimes, was first built in 1978.
+            The Alexander Schleicher ASK21 is a two-seater glider designed by Rudolf Kaiser (therefor AS*K*).
+	    It is often used in flight training, either normal or aerobatic. For spinning, it can be equipped
+	    with a tail ballast, this can be done in flightgear, by setting "Tail Ballast" in Fuel and Payload.
+	    The K21, how it is also called sometimes, was first built in 1978.
         </long-description>
         <status>production</status>
         <rating>
-            <FDM type="int">4</FDM>
-            <systems type="int">4</systems>
-            <cockpit type="int">4</cockpit>
-            <model type="int">4</model>
-        </rating>
-        <systems>
-            <property-rule n="101">
-                <name>gear_agl-m</name>
-                <path>Aircraft/ASK21/shadow-system.xml</path>
-            </property-rule>
-        </systems>
-        <aircraft-version>201702</aircraft-version>
+            <FDM type="int">5</FDM>
+            <systems type="int">5</systems>
+            <cockpit type="int">5</cockpit>
+            <model type="int">5</model>
+        </rating>	
+	<systems>  
+	  <property-rule n="100">  <!-- "n" needs to be >= 100 to avoid overwriting other predefined global rules (in particular the environment ones) -->
+	<name>Stall</name>  <!--  Optional name tag useful for debugging and other maintenance -->
+	<path>Systems/stall.xml</path>  <!-- path can be relative to the current aircraft-set.xml location -->
+      </property-rule>
+      <property-rule n="101">
+	<name>gear_agl-m</name>
+	<path>Aircraft/ASK21/shadow-system.xml</path>
+      </property-rule>
+    </systems>
+
+        <aircraft-version>4.2</aircraft-version>
         <flight-model archive="y">yasim</flight-model>
         <aero archive="y">ask21</aero>
         <startup>
@@ -35,7 +82,7 @@ See AUTHORS.txt for credits
             <window-shader type="bool">0</window-shader><!--Disable window shader by default-->
             <pilots-enabled type="bool">1</pilots-enabled><!--Enable pilot models by default-->
             <instruments-light type="int">0</instruments-light><!--Disable fake instrument lights by default-->
-            <shadow type="bool">1</shadow>
+            <shadow type="bool">0</shadow>
             <door-positions>
                 <frontwin>
                     <position-norm type="double">1.0</position-norm> <!--Starting with front win opened is more realistic, because it's needed to open the door front the outside, so it's usually open when you sit in-->
@@ -44,7 +91,7 @@ See AUTHORS.txt for credits
                     <position-norm type="double">1.0</position-norm> <!--see above-->
                 </rearwin>
             </door-positions>
-            <livery>
+            <livery archive="y">
                 <file type="string">D-3981</file>
                 <show-immat type="bool">false</show-immat>
                 <instruments>
@@ -79,6 +126,8 @@ See AUTHORS.txt for credits
                 <int   n="8"  type="int"  alias="/gear/gear[0]/wow/"/>
                 <int   n="9"  type="int"  alias="/gear/gear[1]/wow/"/>
                 <int   n="11" type="int"  alias="/gear/gear[2]/wow/"/>                      <!-- 10 seems to be reserved for bombable, so we use 11 here -->
+                <int type="int" n="12" alias="/engines/engine[0]/running">  0 </int>
+		<int type="int" n="13" alias="/engines/engine[0]/cranking">  0 </int>
                 <float n="0"  alias="/sim/model/door-positions/canopyF/position-norm"/>     <!-- 0 Canopy Front-->
                 <float n="1"  alias="/sim/model/door-positions/canopyFJ/position-norm"/>    <!-- 1 Canopy Front JETTISON-->
                 <float n="2"  alias="/sim/model/door-positions/canopyB/position-norm"/>     <!-- 2 Canopy Rear-->
@@ -88,17 +137,33 @@ See AUTHORS.txt for credits
                 <float n="6"  alias="/gear/gear[1]/rollspeed-ms"/>
                 <float n="7"  alias="/gear/gear[2]/rollspeed-ms"/>
                 <float n="8"  alias="/surface-positions/speedbrake-pos-norm"/>
-                <!-- For Bombable -->
-                <int   n="10" type="int"/>
-                <string n="9" type="string"/>
+                <float n="9"  alias="/accelerations/pilot-g[0]"/>
+                <float n="10"  alias="/sim/model/door-positions/motor/position-norm"/>     <!-- Motor-->
+                <float n="11" alias="/controls/engines/engine[0]/throttle" />
+                <float n="12" alias="/engines/engine[0]/mp-osi"/>
+		<float n="13" alias="/orientation/alpha-deg"/>
+                 
             </generic>
         </multiplay>
+	
+	
+	<!-- Speedbreake step settings -->
+    <spoilers>
+      <setting>0.00</setting>
+      <setting>0.08</setting>
+      <setting>0.16</setting>
+      <setting>0.32</setting>
+      <setting>0.48</setting>
+      <setting>0.64</setting>
+      <setting>0.82</setting>
+      <setting>1.00</setting>
+    </spoilers>
+	
         <!-- Save some properties when the simulator is shut down -->
         <aircraft-data>
             <path>/sim/model/window</path>
             <path>/sim/model/window-shader</path>
             <path>/sim/model/pilots-enabled</path>
-            <path>/sim/model/instruments-light</path>
             <path>/sim/weight[0]/weight-lb</path>
             <path>/sim/weight[1]/weight-lb</path>
         </aircraft-data>
@@ -136,15 +201,16 @@ See AUTHORS.txt for credits
             <config>
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <x-offset-m type="double">0.0</x-offset-m>
-                <y-offset-m type="double">0.92727</y-offset-m>
-                <z-offset-m type="double">-2.51535</z-offset-m>
+                <y-offset-m type="double">0.95</y-offset-m>
+                <z-offset-m type="double">-2.56</z-offset-m>
                 <pitch-offset-deg>-8</pitch-offset-deg>
+		<default-field-of-view-deg type="double">73.0</default-field-of-view-deg>
                 <limits>
-                    <enabled type="bool">false</enabled>
+                    <enabled type="bool">true</enabled>
                     <left>
-                        <heading-max-deg type="double">120</heading-max-deg>
-                        <x-offset-max-m type="double">0.10</x-offset-max-m>
-                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                        <heading-max-deg type="double">160</heading-max-deg>
+                        <x-offset-max-m type="double">0.20</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
                     </left>
                     <right>
                         <heading-max-deg type="double">160</heading-max-deg>
@@ -167,7 +233,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">-1.53362</z-offset-m>
                 <default-heading-offset-deg>300</default-heading-offset-deg>
                 <pitch-offset-deg>-17.1</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="101">
@@ -183,7 +249,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">-1.35395</z-offset-m>
                 <default-heading-offset-deg>90</default-heading-offset-deg>
                 <pitch-offset-deg>00</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="102">
@@ -199,7 +265,7 @@ See AUTHORS.txt for credits
                 <z-offset-m archive="y" type="double">3.36041</z-offset-m>
                 <default-heading-offset-deg>0</default-heading-offset-deg>
                 <pitch-offset-deg>-10</pitch-offset-deg>
-                <default-field-of-view-deg>120.0</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">120.0</default-field-of-view-deg>
             </config>
         </view>
         <view n="103">
@@ -211,11 +277,11 @@ See AUTHORS.txt for credits
                 <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <heading-offset-deg type="double">0</heading-offset-deg>
                 <x-offset-m archive="y" type="double">0.0</x-offset-m>
-                <y-offset-m archive="y" type="double">1.09137</y-offset-m>
-                <z-offset-m archive="y" type="double">-1.41704</z-offset-m>
+                <y-offset-m archive="y" type="double">1.0</y-offset-m>
+                <z-offset-m archive="y" type="double">-1.49</z-offset-m>
                 <default-heading-offset-deg>0</default-heading-offset-deg>
                 <pitch-offset-deg>-10</pitch-offset-deg>
-                <default-field-of-view-deg>65</default-field-of-view-deg>
+                <default-field-of-view-deg type="double">89</default-field-of-view-deg>
                 <limits>
                     <enabled type="bool">false</enabled>
                     <left>
@@ -357,241 +423,225 @@ See AUTHORS.txt for credits
 
     </limits>
     <instrumentation>
-        <comm>
+      <comm>
             <serviceable-int type="int">0</serviceable-int>
         </comm>
-        <transponder>
-                <knob-mode type="int">0</knob-mode> <!--The ASK21 is not equipped with a transponder-->
-        </transponder>
+        <comm-radio>
+          <name>comm</name>
+          <number>0</number>
+        </comm-radio>
+        
+        <alerts><stall type="bool">false</stall></alerts>
+	
     </instrumentation>
-    <controls>
-        <cabin>
-            <armrests type="bool">0</armrests><!--Black armrests off by default-->
-        </cabin>
-        <breakage>
-            <enabled type="bool">0</enabled><!--Rope Breakage by default disabled-->
-            <altitude-m type="double">50</altitude-m>
-        </breakage>
-        <electric>
-            <battery-switch type="bool">0</battery-switch>
-            <battery-switch-pos type="double">0</battery-switch-pos>
-        </electric>
-        <engines>
-            <engine>
-                <throttle>1.0</throttle>
-            </engine>
-        </engines>
-        <flight>
-            <rudder2 type="double">0</rudder2>
-        </flight>
-        <gear>
-            <assist-1 type="bool">false</assist-1>
-        </gear>
-        <winch>
-            <place type="bool">false</place>
-        </winch>
-        <aerotow>
-            <find-aircraft type="bool">false</find-aircraft>
-        </aerotow>
-        <smoke type="bool">false</smoke>
-    </controls>
+    
+    <consumables><fuel><tank><selected type="bool">false</selected></tank></fuel></consumables>
+    
     <input>
-        <keyboard>
-            <key n="127">
-                <name>Delete</name>
-                <desc>Toggle Reversers</desc>
-                <binding>
-                    <condition>
-                        <equals>
-                            <property>controls/engines/engine[0]/throttle</property>
-                            <value>0</value>
-                        </equals>
-                    </condition>
-                    <command>property-toggle</command>
-                    <property>controls/engines/engine[0]/reverser</property>
-                </binding>
-            </key>
-            <key n="68">
-                <name>D</name>
-                <desc>Toggle Both Windows</desc>
-                <binding>
-                    <condition>
-                        <less-than>
-                            <property>sim/model/door-positions/frontwin/position-norm</property>
-                            <value>0.5</value>
-                        </less-than>
-                    </condition>
-                    <command>property-interpolate</command>
-                    <property>sim/model/door-positions/frontwin/position-norm</property>
-                    <value type="double">1.0</value>
-                    <rate>0.5</rate>
-                </binding>
-                <binding>
-                    <condition>
-                        <greater-than-equals>
-                            <property>sim/model/door-positions/frontwin/position-norm</property> 
-                            <value>0.5</value>
-                        </greater-than-equals>
-                    </condition>
-                    <command>property-interpolate</command>
-                    <property>sim/model/door-positions/frontwin/position-norm</property>
-                    <value type="double">0.0</value>
-                    <rate>0.5</rate>
-                </binding>
-                <binding>
-                    <!-- using frontwin in the conditional for readwin in order to synchronize both windows positions -->
-                    <condition>
-                        <less-than>
-                            <property>sim/model/door-positions/frontwin/position-norm</property>
-                            <value>0.5</value>
-                        </less-than>
-                    </condition>
-                    <command>property-interpolate</command>
-                    <property>sim/model/door-positions/rearwin/position-norm</property>
-                    <value type="double">1.0</value>
-                    <rate>0.5</rate>
-                </binding>
-                <binding>
-                    <condition>
-                        <greater-than-equals>
-                            <property>sim/model/door-positions/frontwin/position-norm</property>
-                            <value>0.5</value>
-                        </greater-than-equals>
-                    </condition>
-                    <command>property-interpolate</command>
-                    <property>sim/model/door-positions/rearwin/position-norm</property>
-                    <value type="double">0.0</value>
-                    <rate>0.5</rate>
-                </binding>
-            </key>
-            <key n="23">
-                <name>Ctrl-w</name>
-                <desc>Place winch in front of aircraft</desc>
-                <binding>
-                    <command>nasal</command>
-                    <script>towing.setWinchPositionAuto()</script>
-                </binding>
-            </key>
-            <key n="87">
-                <name>W</name>
-                <desc>Increase winch speed</desc>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
-                        if (throttle > 1) throttle = 1;
-                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-                        force = getprop("/sim/hitches/winch/force");
-                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-                    </script>
-                </binding>
-            </key>
-            <key n="119">
-                <name>w</name>
-                <desc>Decrease winch speed</desc>
-                <binding>
-                    <command>nasal</command>
-                    <script>
-                        throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
-                        if (0 > throttle) throttle = 0;
-                        setprop("/sim/hitches/winch/winch/rel-speed", throttle);
-                        speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
-                        force = getprop("/sim/hitches/winch/force");
-                        gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
-                    </script>
-                </binding>
-            </key>
-            <key n="15">
-                <name>Ctrl-o</name>
-                <desc>Find aircraft for aerotow</desc>
-                <binding>
-                    <command>property-assign</command>
-                    <property>/controls/aerotow/find-aircraft</property>
-                    <value type="bool">true</value>
-                </binding>
-                <mod-up>
-                    <binding>
-                        <command>property-assign</command>
-                        <property>/controls/aerotow/find-aircraft</property>
-                        <value type="bool">false</value>
-                    </binding>
-                </mod-up>
-            </key>
-            <key n="111">
-                <name>o</name>
-                <desc>Open hook</desc>
-                <binding>
-                    <command>property-assign</command>
-                    <property>/sim/hitches/hook-open</property>
-                    <value type="bool">true</value>
-                </binding>
-                <binding>
-                    <command>property-assign</command>
-                    <property>/sim/hitches/aerotow/open</property>
-                    <value type="bool">true</value>
-                </binding>
-                <binding>
-                    <command>property-assign</command>
-                    <property>/sim/hitches/winch/open</property>
-                    <value type="bool">true</value>
-                </binding>
-                <mod-up>
-                    <binding>
-                        <command>property-assign</command>
-                        <property>/sim/hitches/hook-open</property>
-                        <value type="bool">false</value>
-                    </binding>
-                </mod-up>
-
-            </key>
-            <key n="83">
-                <name>S</name>
-                <desc>Vario volume up</desc>
-                <binding>
-                    <command>property-adjust</command>
-                    <property>/instrumentation/ilec-sc7/volume</property>
-                    <step>0.1</step>
-                    <max>1</max>
-                </binding>
-            </key>
-            <key n="115">
-                <name>s</name>
-                <desc>Vario volume down</desc>
-                <binding>
-                    <command>property-adjust</command>
-                    <property>/instrumentation/ilec-sc7/volume</property>
-                    <step>-0.1</step>
-                    <min>0</min>
-                </binding>
-            </key>
-            <key n="19">
-                <name>Ctrl-s</name>
-                <desc>Start/stop smoke</desc>
-                <binding>
-                    <command>property-toggle</command>
-                    <property>controls/smoke</property>
-                </binding>
-            </key>
-        </keyboard>
-    </input>
+      
+      <keyboard>
+	<key n="127">
+	  <name>Delete</name>
+	  <desc>Toggle Reversers</desc>
+	  <binding>
+	    <condition>
+	      <equals>
+		<property>controls/engines/engine[0]/throttle</property>
+		<value>0</value>
+	      </equals>
+	    </condition>
+	    <command>property-toggle</command>
+	    <property>controls/engines/engine[0]/reverser</property>
+	  </binding>
+	</key>
+	
+	<key n="68">
+	  <name>D</name>
+	  <desc>Toggle Both Windows</desc>
+	  <binding>
+	    <condition>
+	      <less-than>
+		<property>sim/model/door-positions/frontwin/position-norm</property>
+		<value>0.5</value>
+	      </less-than>
+	    </condition>
+	    <command>property-interpolate</command>
+	    <property>sim/model/door-positions/frontwin/position-norm</property>
+	    <value type="double">1.0</value>
+	    <rate>0.5</rate>
+	  </binding>
+	  <binding>
+	    <condition>
+	      <greater-than-equals>
+		<property>sim/model/door-positions/frontwin/position-norm</property>
+		<value>0.5</value>
+	      </greater-than-equals>
+	    </condition>
+	    <command>property-interpolate</command>
+	    <property>sim/model/door-positions/frontwin/position-norm</property>
+	    <value type="double">0.0</value>
+	    <rate>0.5</rate>
+	  </binding>
+	  <binding>
+	    <!-- using frontwin in the conditional for rearwin in order to synchronize both windows positions -->
+	    <condition>
+	      <less-than>
+		<property>sim/model/door-positions/frontwin/position-norm</property>
+		<value>0.5</value>
+	      </less-than>
+	    </condition>
+	    <command>property-interpolate</command>
+	    <property>sim/model/door-positions/rearwin/position-norm</property>
+	    <value type="double">1.0</value>
+	    <rate>0.5</rate>
+	  </binding>
+	  <binding>
+	    <condition>
+	      <greater-than-equals>
+		<property>sim/model/door-positions/frontwin/position-norm</property>
+		<value>0.5</value>
+	      </greater-than-equals>
+	    </condition>
+	    <command>property-interpolate</command>
+	    <property>sim/model/door-positions/rearwin/position-norm</property>
+	    <value type="double">0.0</value>
+	    <rate>0.5</rate>
+	  </binding>
+	</key>
+	
+	<key n="101">
+	  <name>e</name>
+	  <desc>Motor Door</desc>
+	  <binding>
+	    <command>nasal</command>
+	    <script>doors.motor.toggle();</script>
+	  </binding>
+	  
+	  <binding>
+		<command>property-toggle</command>
+		<property>/consumables/fuel/tank[0]/selected</property>
+	  </binding>  
+	</key>
+	
+	<key n="23">
+	  <name>Ctrl-w</name>
+	  <desc>Place winch in front of aircraft</desc>
+	  <binding>
+	    <command>nasal</command>
+	    <script>towing.setWinchPositionAuto()</script>
+	  </binding>
+	</key>
+	
+	<key n="87">
+	  <name>W</name>
+	  <desc>Increase winch speed</desc>
+	  <binding>
+	    <command>nasal</command>
+	    <script>
+	      throttle = getprop("/sim/hitches/winch/winch/rel-speed") + 0.05;
+	      if (throttle > 1) throttle = 1;
+		  setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+		  speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+		  force = getprop("/sim/hitches/winch/force");
+		  gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
+		</script>
+	      </binding>
+	    </key>
+	    
+	    <key n="119">
+	      <name>w</name>
+	      <desc>Decrease winch speed</desc>
+	      <binding>
+		<command>nasal</command>
+		<script>
+		  throttle = getprop("/sim/hitches/winch/winch/rel-speed") - 0.05;
+		  if (0 > throttle) throttle = 0;
+		  setprop("/sim/hitches/winch/winch/rel-speed", throttle);
+		  speed = throttle * getprop("/sim/hitches/winch/winch/max-speed-m-s");
+		  force = getprop("/sim/hitches/winch/force");
+		  gui.popupTip(sprintf("Winch throttle %d%%, speed %0.2f m/s, force %0.2f", throttle * 100, speed, force));
+		</script>
+	      </binding>
+	    </key>
+	    
+	    <key n="15">
+	      <name>Ctrl-o</name>
+	      <desc>Find aircraft for aerotow</desc>
+	      <binding>
+		<command>property-assign</command>
+		<property>/controls/aerotow/find-aircraft</property>
+		<value type="bool">true</value>
+	      </binding>
+	      <mod-up>
+		<binding>
+		  <command>property-assign</command>
+		  <property>/controls/aerotow/find-aircraft</property>
+		  <value type="bool">false</value>
+		</binding>
+	      </mod-up>
+	    </key>
+	    
+	    <key n="111">
+	      <name>o</name>
+	      <desc>Open hook</desc>
+	      <binding>
+		<command>property-assign</command>
+		<property>/sim/hitches/hook-open</property>
+		<value type="bool">true</value>
+	      </binding>
+	      <binding>
+		<command>property-assign</command>
+		<property>/sim/hitches/aerotow/open</property>
+		<value type="bool">true</value>
+	      </binding>
+	      <binding>
+		<command>property-assign</command>
+		<property>/sim/hitches/winch/open</property>
+		<value type="bool">true</value>
+	      </binding>
+	      <mod-up>
+		<binding>
+		  <command>property-assign</command>
+		  <property>/sim/hitches/hook-open</property>
+		  <value type="bool">false</value>
+		</binding>
+	      </mod-up>
+	      
+	      </key>
+	      
+	      <key n="19">
+		<name>Ctrl-s</name>
+		<desc>Start/stop smoke</desc>
+		<binding>
+		  <command>property-toggle</command>
+		  <property>controls/smoke</property>
+		</binding>
+	      </key>
+	    </keyboard>
+	    
+	    </input>
+    
     <nasal>
         <doors>
             <file>Aircraft/ASK21/Nasal/door.nas</file>
         </doors>
         <ask21>
-            <file>Aircraft/ASK21/Nasal/limits.nas</file>
+	  <!--<file>Aircraft/ASK21/Nasal/limits.nas</file>-->
             <file>Aircraft/Instruments-3d/glider/vario/ilec-sc7/ilec-sc7.nas</file>
             <file>Aircraft/ASK21/Nasal/wool-thread.nas</file>
             <file>Aircraft/ASK21/Nasal/AR3201.nas</file>
             <file>Aircraft/ASK21/Nasal/GMeter.nas</file>
-            <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
+	    <file>Aircraft/ASK21/Nasal/groundhandling.nas</file>
             <file>Aircraft/ASK21/Nasal/wingbending.nas</file>
-            <file>Aircraft/ASK21/Nasal/jsoverride.nas</file>
+            <!--  <file>Aircraft/ASK21/Nasal/jsoverride.nas</file> -->
+            <!--  <file>Aircraft/ASK21/Nasal/stall.nas</file>-->
             <file>Aircraft/ASK21/Nasal/liveries.nas</file>
             <file>Aircraft/ASK21/Nasal/rain.nas</file>
              <file>Aircraft/ASK21/Nasal/immat.nas</file>
              <file>Aircraft/ASK21/Nasal/listeners.nas</file>
+	 <warning>
+	            <file>Aircraft/ASK21/Nasal/ASK21-stall.nas</file>
+	 </warning>    
         </ask21>
     </nasal>
 </PropertyList>

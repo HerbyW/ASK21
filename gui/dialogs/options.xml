@@ -99,11 +99,21 @@
         <property>/sim/model/instruments-light</property>
         <live>true</live>
         <binding>
-            <command>property-cycle</command>
-            <property>/sim/model/instruments-light</property>
-            <value type="int">0</value>
-            <value type="int">1</value>
-        </binding>
+				<command>property-toggle</command>
+                                <property>/controls/electric/turn-slip-switch</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+                                <property>/sim/model/instruments-light</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+                                <property>/controls/switches/gauge-light</property>
+			</binding>
+			<binding>
+				<command>property-toggle</command>
+				<property>/sim/sound/switch</property>
+			</binding>
     </checkbox>
     <hrule/>
     <button>

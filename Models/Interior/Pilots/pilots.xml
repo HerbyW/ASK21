@@ -2,7 +2,7 @@
 
 <PropertyList>
 
- <path>pilots.ac</path> 
+ <path>pilots2.ac</path> 
 
     <!--Cockpit Shader-->
     <effect>
@@ -13,7 +13,7 @@
         <inherits-from>Aircraft/ASK21/Models/Effects/interior-shadow-back</inherits-from>
         <object-name>copilot</object-name>
     </effect>
-    
+ <!--   
     <animation>
         <type>select</type>
         <condition>
@@ -39,4 +39,5 @@
         </condition>
         <object-name>copilot</object-name>
     </animation>
+    -->
 </PropertyList>

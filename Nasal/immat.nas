@@ -29,6 +29,6 @@ var immatInit = setlistener("/sim/signals/fdm-initialized", func {
   else immat.setValue("D-1234");
   }
   refresh_immat();
-  setlistener("sim/model/immat", refresh_immat, 0);
+  setlistener("/sim/model/immat", refresh_immat, 0);
   removelistener(immatInit);
 },0);
