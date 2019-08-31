@@ -941,5 +941,67 @@
       </equals>
     </condition>
   </animation>
+  
+      <!--helping wheels -->
+    <model>
+        <path>Aircraft/ASK21/Models/wheels21.ac</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0.08</z-m>
+        </offsets>
+    </model>
+    
+    <animation>
+        <type>select</type>
+        <object-name>halterung</object-name>
+        <object-name>reifen</object-name>
+	<object-name>speichen</object-name>
+	<object-name>halterung.001</object-name>
+        <object-name>reifen.001</object-name>
+	<object-name>speichen.001</object-name>
+        <condition>
+            <equals>
+                <property>sim/multiplay/generic/float[13]</property>
+                <value>1</value>
+            </equals>
+        </condition>
+  </animation>
+  
+  <animation>
+    <type>spin</type>
+        <object-name>reifen</object-name>
+	<object-name>speichen</object-name>
+    <property>sim/multiplay/generic/float[5]</property>
+    <factor> -20 </factor>
+    <center>
+      <x-m> -1.20780 </x-m>
+      <y-m> -4.94980 </y-m>
+      <z-m>  0.26373 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>spin</type>
+        <object-name>reifen.001</object-name>
+	<object-name>speichen.001</object-name>
+    <property>sim/multiplay/generic/float[5]</property>
+    <factor> -20 </factor>
+    <center>
+      <x-m> -1.20780 </x-m>
+      <y-m>  4.95021 </y-m>
+      <z-m>  0.26373 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
     
 </PropertyList>

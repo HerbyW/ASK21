@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <description>Cessna 177</description>
+  <author>Brett Harrison</author>  
+  <path>Models/c177.ac</path>
+  <sound><path>AI/Aircraft/c177/Models/sound.xml</path></sound>
+  <offsets>
+    <pitch-deg>1.99</pitch-deg>
+  </offsets>   
+  
+  <animation>
+    <name>propall</name>
+    <object-name>prop</object-name>
+    <object-name>propdisc</object-name>
+  </animation>
+  
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>/sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>propdisc</object-name>
+  </effect>
+  
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+	<property>velocities/true-airspeed-kt</property>
+	<value>30</value>
+      </greater-than>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>prop</object-name>
+    <condition>
+      <less-than>
+	<property>velocities/true-airspeed-kt</property>
+	<value>30</value>
+      </less-than>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>spin</type>
+    <object-name>propall</object-name>
+    <property>velocities/true-airspeed-kt</property>
+    <factor> 90 </factor>
+    <center>
+      <x-m> -2.7391</x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.9576 </z-m>
+    </center>
+    <axis>
+      <x> -1.000 </x>
+      <y>  0.000 </y>
+      <z>  0.000 </z>
+    </axis>
+  </animation>
+  
+  <particlesystem>
+		<name>engine-smoke</name>
+		<offsets>
+			<x-m>-1</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>1</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+		<texture>smoke.png</texture>
+		
+		<condition>
+		  
+		           <greater-than>
+					<property>velocities/true-airspeed-kt</property>
+					<value>5</value>
+			   </greater-than>
+			  
+		</condition>
+		
+		<emissive>false</emissive>
+		<lighting>false</lighting>
+		<align>billboard</align>
+		<attach>world</attach>
+		<placer>
+			<type>point</type>
+		</placer>
+		<shooter>
+			<theta-min-deg>88</theta-min-deg>
+			<theta-max-deg>92</theta-max-deg>
+			<phi-min-deg>-2</phi-min-deg>
+			<phi-max-deg> 2</phi-max-deg>
+			<speed-mps>
+				<property>velocities/true-airspeed-kt</property>
+				<spread>8</spread>
+			</speed-mps>
+			<rotation-speed>
+				<x-min-deg-sec>0</x-min-deg-sec>
+				<y-min-deg-sec>0</y-min-deg-sec>
+				<z-min-deg-sec>0</z-min-deg-sec>
+				<x-max-deg-sec>0</x-max-deg-sec>
+				<y-max-deg-sec>0</y-max-deg-sec>
+				<z-max-deg-sec>0</z-max-deg-sec>
+			</rotation-speed>
+		</shooter>
+		<counter>
+			<particles-per-sec>
+				<value>20</value>
+				<spread>6</spread>
+			</particles-per-sec>
+		</counter>
+		<particle>
+			<start>
+				<color>
+					<red><value>0.52</value></red>
+					<green><value>0.52</value></green>
+					<blue><value>0.52</value></blue>
+					<alpha><value>0.04</value></alpha>
+				</color>
+				<size>
+					<value>0.75</value>
+				</size>
+			</start>
+			<end>
+				<color>
+					<red><value>0.95</value></red>
+					<green><value>0.95</value></green>
+					<blue><value>0.95</value></blue>
+					<alpha><value>0.0</value></alpha>
+				</color>
+				<size>
+					<value>5</value>
+				</size>
+			</end>
+			<life-sec>
+				<value>3</value>
+			</life-sec>
+			<mass-kg>0.5</mass-kg>
+			<radius-m>0.01</radius-m>
+		</particle>
+		<program>
+			<fluid>air</fluid>
+			<gravity>false</gravity>
+			<wind>true</wind>
+		</program>
+	</particlesystem>
+
+</PropertyList>
+  

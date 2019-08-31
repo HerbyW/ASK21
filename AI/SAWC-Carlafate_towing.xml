@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <scenario>
+
+  <description>
+     This scenario has a c177 takeoff from Carlafate for aerotowing the Perlan-II Stratospheric Glider.
+     Herbert Wagner, 09/2017
+  </description>
+
+  <entry>
+   <callsign>dragger</callsign>
+   <type>aircraft</type>
+   <class>aerotow-dragger</class>
+   <model>Aircraft/c177/c177-n16034.xml</model>
+   <flightplan>SAWC_c177_towing.xml</flightplan>
+   <repeat>1</repeat>
+  </entry>
+
+ </scenario>
+
+</PropertyList>

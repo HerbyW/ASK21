@@ -30,7 +30,7 @@
     </key>
     <key>
         <name>e</name>
-        <desc>Mototr out/in</desc>
+        <desc>Motor out/in</desc>
     </key>
     <key>
         <name>{</name>
@@ -40,9 +40,17 @@
         <name>s</name>
         <desc>Starter</desc>
     </key>
+    <key>
+        <name>strg+s</name>
+        <desc>Wing smoke on/off</desc>
+    </key>
+    <key>
+    <name>&lt;</name>
+    <desc>Change Pilot Model View</desc>
+  </key>
     
     <text>
-    === General Help Version 4.2===
+    === General Help Version 4.3===
     
      - You can take off using a winch or use another aircraft as an aerotow.
      - The winch / aerotow cable can be released with the "o" key or using button 1 of the (first) joystick.
@@ -91,5 +99,28 @@
     When there is somebody with a follow-me around, you can connect to it by pressing Ctrl+o
     (release: Ctrl+shift+o) so he can carry you around the airport
     or even tow you into the air! (also check the Aerotow Settings therefore.
+    
+    
+    === Change wind settings ===
+
+Environment > Weather: Weather Conditions: Fair weather -- detailed weather -- advanced settings
+Advanced weather Configuration: realistic weather, terrain presampling and terrain effects on,
+Wind settings - Wind model: aloft interpol, generate thermals, realistic visability and cloud shadows on,
+Convective Conditions: rough day, Turbulence: 60%, Weather Pattern Scales: both to 50%
+Wind Configuration: Direction and Speed as you want to see it: for example:
+
+230/13 220/23 210/35 190/40  (210/150  270/175  290/250  270/250 260/250)
+
+This setting illuminates a chcanging wind from the south-west with diffrent speed in different altitudes,
+so that everyone can have the same flight conditions and a lot of differnt tasks may be done!
+FL00 is sea-level! Have fun!
+
+Norway: ENBM Bomoen
+France: LFHZ Mont Blanc, LFNC Saint Crepin
+Austria: LOWI Innsbruck
+Italia: LIDB Belluno
+
+In the extra folder "AI" you find some towing action, copy all files into the AI folder of FGdata. Then select the ai-scenaries as usual. Used airports are: LSZR, EDFZ and SAWC
+
     </text>
 </PropertyList>

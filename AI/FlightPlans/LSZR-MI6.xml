@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+ 
+ <PropertyList>
+   
+   <flightplan>
+     <wpt>
+       <name>1-No name</name>
+       <lat>47.4872</lat>
+       <lon>9.55793</lon>
+       <alt>1310</alt>
+       <ktas>3</ktas>
+       <on-ground>0</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>1b-No name</name>
+       <lat>47.4875</lat>
+       <lon>9.55794</lon>
+       <crossat>1350.0</crossat>
+       <ktas>7</ktas>
+       <on-ground>0</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>1c-No name</name>
+       <lat>47.4879</lat>
+       <lon>9.55778</lon>
+       <crossat>1390.0</crossat>
+       <ktas>7</ktas>
+       <on-ground>0</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>1d-No name</name>
+       <lat>47.4877</lat>
+       <lon>9.55719</lon>
+       <crossat>1460.0</crossat>
+       <ktas>7</ktas>
+       <on-ground>0</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>2-No name</name>
+       <lat>47.4844</lat>
+       <lon>9.55736</lon>
+       <crossat>1660.0</crossat>
+       <ktas>5</ktas>
+       <on-ground>false</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>2b-No name</name>
+       <lat>47.4824</lat>
+       <lon>9.56657</lon>
+       <crossat>3660.0</crossat>
+       <ktas>5</ktas>
+       <on-ground>false</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>2b2-No name</name>
+       <lat>47.4801</lat>
+       <lon>9.56091</lon>
+       <crossat>2660.0</crossat>
+       <ktas>7</ktas>
+       <on-ground>false</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>2c-No name</name>
+       <lat>47.4867</lat>
+       <lon>9.55767</lon>
+       <crossat>1315.0</crossat>
+       <ktas>3</ktas>
+       <on-ground>false</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>3-No name</name>
+       <lat>47.4872</lat>
+       <lon>9.55793</lon>
+       <crossat>1308.0</crossat>
+       <ktas>1</ktas>
+       <on-ground>1</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     <wpt>
+       <name>3b-No name</name>
+       <lat>47.4875</lat>
+       <lon>9.55789</lon>
+       <alt>0</alt>
+       <ktas>0</ktas>
+       <on-ground>true</on-ground>
+       <gear-down>true</gear-down>
+       <flaps-down>true</flaps-down>
+     </wpt>
+     
+     <wpt>
+       <name>END</name>
+     </wpt>
+     
+     </flightplan>
+     
+     </PropertyList>
